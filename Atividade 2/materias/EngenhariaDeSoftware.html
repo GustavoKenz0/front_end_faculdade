@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/conteudo.css">
+    <title>Redes Lan-Eng de Software</title>
+</head>
+
+<body>
+    <header>
+        <button class="btn-voltar"><a href="../index.html">
+                <span>&#8592;</span> Voltar
+            </a>
+        </button>
+        <h1>Kenzo Estudos</h1>
+    </header>
+
+    <div class="container">
+
+        <section class="titulo-pagina">
+            <h2>Guia de Redes LAN</h2>
+            <p>Consulte o conteúdo abaixo e teste o seu conhecimento no final da página.</p>
+        </section>
+
+        <!-- Conteúdo de Estudo -->
+        <main class="card">
+            <h2>1. O que é uma Rede LAN?</h2>
+            <p>LAN significa <strong>Local Area Network</strong> (Rede de Área Local). É uma rede que conecta
+                computadores próximos, como na sua casa, na escola ou em um escritório.</p>
+
+            <div class="grid-tipos" style="margin-top: 20px;">
+                <div class="tipo-box">
+                    <strong>WLAN</strong><br><small>Sem fio (Wi-Fi)</small>
+                </div>
+                <div class="tipo-box">
+                    <strong>VLAN</strong><br><small>Rede Virtual</small>
+                </div>
+                <div class="tipo-box">
+                    <strong>SAN</strong><br><small>Armazenamento</small>
+                </div>
+            </div>
+        </main>
+
+        <section class="card">
+            <h2>2. Topologias de Rede</h2>
+            <p>Topologia é o desenho de como os computadores estão ligados entre si.</p>
+
+            <div class="topologia-item">
+                <h4>Estrela (Star)</h4>
+                <p>Todos se ligam a um aparelho central (Switch). É a mais usada hoje em dia.</p>
+            </div>
+
+            <div class="topologia-item">
+                <h4>Barramento (Bus)</h4>
+                <p>Todos usam o mesmo cabo central. Se o cabo quebrar, ninguém funciona.</p>
+            </div>
+
+            <div class="topologia-item">
+                <h4>Anel (Ring)</h4>
+                <p>Cada computador liga no vizinho, formando um círculo.</p>
+            </div>
+
+            <div class="topologia-item">
+                <h4>Malha (Mesh)</h4>
+                <p>Todos se ligam a todos. É muito segura mas muito cara.</p>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>3. Cabos e Velocidade</h2>
+            <p>As redes LAN geralmente usam cabos chamados "Par Trançado" e o padrão mais conhecido é o
+                <strong>Ethernet</strong>.
+            </p>
+            <ul>
+                <li><strong>Fast Ethernet:</strong> 100 Mega</li>
+                <li><strong>Gigabit Ethernet:</strong> 1000 Mega (Mais comum)</li>
+            </ul>
+        </section>
+
+        <!-- SEÇÃO DO QUIZ NA MESMA PÁGINA -->
+        <section class="quiz-card" id="secao-quiz">
+            <h2 style="color: #1e40af; margin-bottom: 10px;">Teste de Conhecimento</h2>
+            <hr style="margin-bottom: 20px; border: 0; border-top: 1px solid #eee;">
+
+            <div id="quiz-ativo">
+                <p id="contador" style="color: #888; margin-bottom: 10px;">Pergunta 1 de 3</p>
+                <div class="pergunta" id="pergunta-texto">Carregando pergunta...</div>
+                <ul class="opcoes-lista" id="lista-opcoes">
+                    <!-- Opções via JS -->
+                </ul>
+            </div>
+
+            <div id="resultado-final">
+                <h3 style="font-size: 1.8em; color: #1e40af;">Simulado Concluído!</h3>
+                <p id="texto-pontuacao" style="font-size: 1.2em; margin: 15px 0;"></p>
+                <button class="btn-acao" onclick="reiniciarQuiz()">Tentar Novamente</button>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>Feito com carinho por um estudante de Redes &copy; 2025</p>
+    </footer>
+
+    <script src="../script/script.js"></script>
+</body>
+
+</html>

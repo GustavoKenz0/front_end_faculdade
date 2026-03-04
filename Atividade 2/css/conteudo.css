@@ -1,0 +1,189 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Barra de Navegação */
+header {
+    background-color: #ffffff;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.btn-voltar {
+    position: absolute;
+    left: 20px;
+    background: none;
+    border: 1px solid #e0e0e0;
+    padding: 8px 15px;
+    border-radius: 6px;
+    color: #666;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.2s;
+}
+
+.btn-voltar:hover {
+    background-color: #f8fafc;
+    border-color: #2563eb;
+    color: #2563eb;
+}
+
+header h1 {
+    color: #2563eb;
+    letter-spacing: -1px;
+}
+
+/* Container principal para centralizar o conteúdo */
+.container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* Título Principal */
+.titulo-pagina {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* Cartões de Conteúdo (Cards) */
+.card {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card h2 {
+    color: #1e40af;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 10px;
+}
+
+/* Lista de Topologias */
+.topologia-item {
+    background-color: #f9f9f9;
+    padding: 15px;
+    margin: 10px 0;
+    border-left: 5px solid #2563eb;
+    border-radius: 4px;
+}
+
+.topologia-item h4 {
+    color: #2563eb;
+    margin-bottom: 5px;
+}
+
+/* Tipos de Redes (Lado a Lado) */
+.grid-tipos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.tipo-box {
+    flex: 1;
+    min-width: 150px;
+    background: #eef2ff;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* --- ESTILOS DO QUIZ INTEGRADO --- */
+.quiz-card {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    border: 2px solid #2563eb;
+    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.1);
+    margin-top: 40px;
+}
+
+.pergunta {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #1e40af;
+}
+
+.opcoes-lista {
+    list-style: none;
+}
+
+.opcao-item {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.opcao-item:hover {
+    background: #eef2ff;
+    border-color: #2563eb;
+}
+
+/* Estado de resposta correta/errada */
+.opcao-item.correta {
+    background-color: #dcfce7;
+    border-color: #22c55e;
+    color: #166534;
+}
+
+.opcao-item.errada {
+    background-color: #fee2e2;
+    border-color: #ef4444;
+    color: #991b1b;
+}
+
+#resultado-final {
+    display: none;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Botões */
+.btn-acao {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: #2563eb;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 8px;
+    margin-top: 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.btn-acao:hover {
+    background-color: #1d4ed8;
+}
+
+footer {
+    text-align: center;
+    padding: 40px;
+    color: #888;
+    font-size: 0.9em;
+}
