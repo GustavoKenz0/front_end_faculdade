@@ -46,20 +46,16 @@ header h1 {
     letter-spacing: -1px;
 }
 
-/* Container principal para centralizar o conteúdo */
 .container {
     max-width: 800px;
     margin: 40px auto;
     padding: 0 20px;
 }
 
-/* Título Principal */
 .titulo-pagina {
     text-align: center;
     margin-bottom: 40px;
 }
-
-/* Cartões de Conteúdo (Cards) */
 .card {
     background-color: #fff;
     padding: 30px;
@@ -75,7 +71,6 @@ header h1 {
     padding-bottom: 10px;
 }
 
-/* Lista de Topologias */
 .topologia-item {
     background-color: #f9f9f9;
     padding: 15px;
@@ -89,7 +84,6 @@ header h1 {
     margin-bottom: 5px;
 }
 
-/* Tipos de Redes (Lado a Lado) */
 .grid-tipos {
     display: flex;
     flex-wrap: wrap;
@@ -105,7 +99,6 @@ header h1 {
     text-align: center;
 }
 
-/* --- ESTILOS DO QUIZ INTEGRADO --- */
 .quiz-card {
     background-color: #ffffff;
     padding: 30px;
@@ -141,7 +134,6 @@ header h1 {
     border-color: #2563eb;
 }
 
-/* Estado de resposta correta/errada */
 .opcao-item.correta {
     background-color: #dcfce7;
     border-color: #22c55e;
@@ -160,7 +152,6 @@ header h1 {
     padding: 20px;
 }
 
-/* Botões */
 .btn-acao {
     display: block;
     width: 100%;
