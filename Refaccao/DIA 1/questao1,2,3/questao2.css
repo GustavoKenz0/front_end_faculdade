@@ -1,0 +1,86 @@
+*{
+    list-style: none;
+}
+
+body{
+    background: #f4f7f6;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+.container{
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+header{
+    text-align: center;
+}
+
+h1{
+    text-transform: uppercase;
+    font-size: 3em;
+    font-weight: bolder;
+    border-bottom: 3px solid blue;
+    padding-bottom: 20px;
+}
+
+ul{
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 5px;
+    padding-bottom: 20px;
+    font-size: 1.2em;
+}
+
+a{
+    text-decoration: none;
+    color: #666
+}
+
+.card{
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    border-radius: 0 4px 6px rgba(0,0,0,0.1);
+    margin-bottom: 25px;
+}
+
+h2{
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+p{
+    border-radius: 4px;
+    padding: 15px;
+    border-left: 4px solid #dddd;
+}
+
+.buttonTabela{
+    display: flex;
+    justify-content: center;
+}
+
+button{
+    background-color: #3498db;
+    color: white;
+    border-radius: 5px;
+    height: 50px;
+    border: none;
+    font-size: 1em;
+    padding: 9px;
+    cursor: pointer;
+}
+
+.imgTabela{
+    display: flex;
+    justify-content: center;
+}
+
+img{
+    padding-top: 20px;
+    width: 80rem;
+}
