@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infinity Bank - Lista de Convidados VIP</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .card {
+            border: none;
+            border-radius: 15px;
+        }
+
+        .riscado {
+            text-decoration: line-through;
+            color: gray;
+        }
+
+        .lista-item {
+            border-bottom: 1px solid #dee2e6;
+            padding: 12px 0;
+        }
+
+        .lista-item:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container d-flex justify-content-center align-items-center min-vh-100">
+
+        <div class="card shadow-lg p-4 w-100" style="max-width: 700px;">
+
+            <h2 class="text-center mb-4">
+                Infinity Bank - Lista de Convidados VIP
+            </h2>
+
+            <div class="input-group mb-4">
+                <input
+                    type="text"
+                    id="nomeConvidado"
+                    class="form-control"
+                    placeholder="Digite o nome do convidado">
+
+                <button id="btnAdicionar" class="btn btn-primary">
+                    Adicionar
+                </button>
+            </div>
+
+            <ul id="listaConvidados" class="list-unstyled"></ul>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        const convidados = [];
+
+        const inputNome = document.getElementById("nomeConvidado");
+        const btnAdicionar = document.getElementById("btnAdicionar");
+        const lista = document.getElementById("listaConvidados");
+
+        btnAdicionar.addEventListener("click", adicionarConvidado);
+
+        function adicionarConvidado() {
+
+            const nome = inputNome.value.trim();
+
+            if (nome === "") {
+                alert("Digite um nome válido.");
+                return;
+            }
+
+            convidados.push(nome);
+
+            atualizarLista();
+
+            inputNome.value = "";
+            inputNome.focus();
+        }
+
+        function atualizarLista() {
+
+            lista.innerHTML = "";
+
+            convidados.forEach((nome, indice) => {
+
+                const li = document.createElement("li");
+
+                li.className =
+                    "lista-item d-flex justify-content-between align-items-center";
+
+                li.innerHTML = `
+                    <span id="nome-${indice}">
+                        ${nome}
+                    </span>
+
+                    <div>
+
+                        <button
+                            class="btn btn-success btn-sm me-2"
+                            onclick="concluir(${indice})">
+                            Concluir
+                        </button>
+
+                        <button
+                            class="btn btn-warning btn-sm me-2"
+                            onclick="editar(${indice})">
+                            Editar
+                        </button>
+
+                        <button
+                            class="btn btn-danger btn-sm"
+                            onclick="excluir(${indice})">
+                            Excluir
+                        </button>
+
+                    </div>
+                `;
+
+                lista.appendChild(li);
+            });
+        }
+
+        function concluir(indice) {
+
+            const elementoNome =
+                document.getElementById(`nome-${indice}`);
+
+            elementoNome.classList.toggle("riscado");
+        }
+
+        function editar(indice) {
+
+            const novoNome = prompt(
+                "Digite o novo nome:",
+                convidados[indice]
+            );
+
+            if (
+                novoNome !== null &&
+                novoNome.trim() !== ""
+            ) {
+                convidados[indice] = novoNome.trim();
+
+                atualizarLista();
+            }
+        }
+
+        function excluir(indice) {
+
+            convidados.splice(indice, 1);
+
+            atualizarLista();
+        }
+
+    </script>
+
+</body>
+</html>

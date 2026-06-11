@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infinity Eventos - Orçamento</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+    <div class="container mt-5">
+
+        <div class="card shadow-lg mx-auto" style="max-width: 700px;">
+            <div class="card-body">
+
+                <h2 class="text-center mb-4">
+                    Infinity Eventos - Calculadora de Orçamento
+                </h2>
+
+                <div class="mb-3">
+                    <label class="form-label">Pacote do Evento</label>
+
+                    <select id="pacote" class="form-select">
+                        <option value="">Selecione um pacote</option>
+                        <option value="50">Standard - R$ 50,00 por pessoa</option>
+                        <option value="80">Premium - R$ 80,00 por pessoa</option>
+                        <option value="120">Infinity Deluxe - R$ 120,00 por pessoa</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Quantidade de Pessoas</label>
+
+                    <input
+                        type="number"
+                        id="quantidade"
+                        class="form-control"
+                        min="1"
+                        placeholder="Digite a quantidade de convidados">
+                </div>
+
+                <div class="d-grid">
+                    <button id="btnCalcular" class="btn btn-primary">
+                        Calcular Orçamento
+                    </button>
+                </div>
+
+                <div id="resultado" class="mt-4"></div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+
+        const botao = document.getElementById("btnCalcular");
+
+        botao.addEventListener("click", function () {
+
+            const valorPacote =
+                Number(document.getElementById("pacote").value);
+
+            const quantidade =
+                Number(document.getElementById("quantidade").value);
+
+            if (valorPacote === 0 || quantidade <= 0) {
+
+                alert("Preencha todos os campos corretamente.");
+                return;
+            }
+
+            const custoBruto =
+                valorPacote * quantidade;
+
+            const taxaServico =
+                custoBruto * 0.10;
+
+            const subtotal =
+                custoBruto + taxaServico;
+
+            let desconto = 0;
+
+            if (quantidade > 100) {
+
+                desconto =
+                    subtotal * 0.05;
+            }
+
+            const totalFinal =
+                subtotal - desconto;
+
+            document.getElementById("resultado").innerHTML = `
+
+                <div class="alert alert-info">
+
+                    <h4 class="mb-3">
+                        Resumo do Orçamento
+                    </h4>
+
+                    <p>
+                        <strong>Custo Bruto:</strong>
+                        R$ ${custoBruto.toFixed(2)}
+                    </p>
+
+                    <p>
+                        <strong>Taxa de Serviço (10%):</strong>
+                        R$ ${taxaServico.toFixed(2)}
+                    </p>
+
+                    <p>
+                        <strong>Desconto Aplicado:</strong>
+                        R$ ${desconto.toFixed(2)}
+                    </p>
+
+                    <hr>
+
+                    <h5>
+                        Total Final:
+                        <span class="text-success">
+                            R$ ${totalFinal.toFixed(2)}
+                        </span>
+                    </h5>
+
+                </div>
+
+            `;
+        });
+
+    </script>
+
+</body>
+</html>

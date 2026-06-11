@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analisador de Cartão</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<div class="container mt-5">
+
+    <div class="card shadow-lg mx-auto" style="max-width: 700px;">
+        <div class="card-body">
+
+            <h2 class="text-center mb-4">
+                Infinity Bank - Analisador de Cartão
+            </h2>
+
+            <div class="mb-3">
+                <label class="form-label">
+                    Número do Cartão
+                </label>
+
+                <input
+                    type="text"
+                    id="cartao"
+                    class="form-control"
+                    placeholder="Digite até 16 dígitos">
+            </div>
+
+            <div class="d-grid">
+                <button
+                    id="btnAnalisar"
+                    class="btn btn-primary">
+                    Analisar Cartão
+                </button>
+            </div>
+
+            <div id="resultado" class="mt-4"></div>
+
+        </div>
+    </div>
+
+</div>
+
+<script>
+
+const botao = document.getElementById("btnAnalisar");
+
+botao.addEventListener("click", analisarCartao);
+
+function analisarCartao() {
+
+    let numero =
+        document.getElementById("cartao")
+        .value
+        .replace(/\D/g, "");
+
+    const resultado =
+        document.getElementById("resultado");
+
+    if (
+        numero.length < 13 ||
+        numero.length > 16
+    ) {
+
+        resultado.innerHTML = `
+            <div class="alert alert-danger">
+                O cartão deve possuir entre
+                13 e 16 dígitos.
+            </div>
+        `;
+
+        return;
+    }
+
+    const valido = validarLuhn(numero);
+
+    const bandeira = identificarBandeira(numero);
+
+    const setor = identificarSetor(numero);
+
+    const banco = identificarBanco(numero);
+
+    resultado.innerHTML = `
+
+        <div class="card border-0 shadow-sm">
+
+            <div class="card-header bg-primary text-white">
+                Painel de Informações
+            </div>
+
+            <div class="card-body">
+
+                <p>
+                    <strong>Status:</strong>
+                    <span class="${
+                        valido
+                        ? 'text-success'
+                        : 'text-danger'
+                    }">
+                        ${
+                            valido
+                            ? 'VÁLIDO'
+                            : 'INVÁLIDO'
+                        }
+                    </span>
+                </p>
+
+                <p>
+                    <strong>Bandeira:</strong>
+                    ${bandeira}
+                </p>
+
+                <p>
+                    <strong>Categoria de Setor:</strong>
+                    ${setor}
+                </p>
+
+                <p>
+                    <strong>Banco Emissor:</strong>
+                    ${banco}
+                </p>
+
+                <p>
+                    <strong>IIN:</strong>
+                    ${numero.substring(0, 8)}
+                </p>
+
+            </div>
+
+        </div>
+
+    `;
+}
+
+function validarLuhn(numero) {
+
+    let soma = 0;
+
+    let inverter = false;
+
+    for (
+        let i = numero.length - 1;
+        i >= 0;
+        i--
+    ) {
+
+        let digito =
+            parseInt(numero.charAt(i));
+
+        if (inverter) {
+
+            digito *= 2;
+
+            if (digito > 9) {
+                digito -= 9;
+            }
+        }
+
+        soma += digito;
+
+        inverter = !inverter;
+    }
+
+    return soma % 10 === 0;
+}
+
+function identificarBandeira(numero) {
+
+    if (numero.startsWith("4")) {
+        return "Visa";
+    }
+
+    if (
+        numero.startsWith("51") ||
+        numero.startsWith("52") ||
+        numero.startsWith("53") ||
+        numero.startsWith("54") ||
+        numero.startsWith("55")
+    ) {
+        return "Mastercard";
+    }
+
+    if (
+        numero.startsWith("34") ||
+        numero.startsWith("37")
+    ) {
+        return "American Express";
+    }
+
+    if (
+        numero.startsWith("6062") ||
+        numero.startsWith("6363")
+    ) {
+        return "Elo";
+    }
+
+    return "Não identificada";
+}
+
+function identificarSetor(numero) {
+
+    const primeiroDigito =
+        numero.charAt(0);
+
+    switch (primeiroDigito) {
+
+        case "1":
+            return "Companhias Aéreas";
+
+        case "2":
+            return "Linhas Aéreas e Financeiras";
+
+        case "3":
+            return "Turismo e Entretenimento";
+
+        case "4":
+        case "5":
+            return "Instituições Financeiras";
+
+        case "6":
+            return "Comércio e Bancos";
+
+        case "7":
+            return "Petróleo e Transporte";
+
+        case "8":
+            return "Telecomunicações";
+
+        case "9":
+            return "Setores Governamentais";
+
+        default:
+            return "Desconhecido";
+    }
+}
+
+function identificarBanco(numero) {
+
+    const iin =
+        numero.substring(0, 4);
+
+    switch (iin) {
+
+        case "4000":
+            return "Banco Infinity";
+
+        case "4111":
+            return "Banco Nacional";
+
+        case "5100":
+            return "Master Bank";
+
+        case "5500":
+            return "Global Finance";
+
+        case "6062":
+            return "Elo Finance";
+
+        default:
+            return "Banco não catalogado";
+    }
+}
+
+</script>
+
+</body>
+</html>

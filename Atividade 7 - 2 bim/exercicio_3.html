@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Situação do Aluno</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+    <div class="container mt-5">
+        <div class="card shadow mx-auto" style="max-width: 600px;">
+            <div class="card-body">
+
+                <h2 class="text-center mb-4">
+                    Calculadora de Média
+                </h2>
+
+                <div class="mb-3">
+                    <label class="form-label">Nome do Aluno</label>
+                    <input type="text" id="nome" class="form-control">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Nota 1</label>
+                    <input type="number" id="nota1" class="form-control" min="0" max="10">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Nota 2</label>
+                    <input type="number" id="nota2" class="form-control" min="0" max="10">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Nota 3</label>
+                    <input type="number" id="nota3" class="form-control" min="0" max="10">
+                </div>
+
+                <div class="d-grid">
+                    <button id="btnCalcular" class="btn btn-primary">
+                        Calcular Média
+                    </button>
+                </div>
+
+                <div id="resultado" class="mt-4"></div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        const botao = document.getElementById("btnCalcular");
+
+        botao.addEventListener("click", function () {
+
+            const nome = document.getElementById("nome").value;
+
+            const nota1 = Number(document.getElementById("nota1").value);
+            const nota2 = Number(document.getElementById("nota2").value);
+            const nota3 = Number(document.getElementById("nota3").value);
+
+            const media = (nota1 + nota2 + nota3) / 3;
+
+            const resultado = document.getElementById("resultado");
+
+            if (media >= 7) {
+
+                resultado.innerHTML = `
+                    <div class="alert alert-primary">
+                        <strong>${nome}</strong><br>
+                        Média: ${media.toFixed(2)}<br>
+                        Situação: APROVADO
+                    </div>
+                `;
+
+            } else if (media >= 4) {
+
+                const falta = (10 - media).toFixed(2);
+
+                resultado.innerHTML = `
+                    <div class="alert alert-success">
+                        <strong>${nome}</strong><br>
+                        Média: ${media.toFixed(2)}<br>
+                        Situação: EXAME<br>
+                        Faltam ${falta} pontos para atingir a média 10.
+                    </div>
+                `;
+
+            } else {
+
+                resultado.innerHTML = `
+                    <div class="alert alert-danger">
+                        <strong>${nome}</strong><br>
+                        Média: ${media.toFixed(2)}<br>
+                        Situação: REPROVADO
+                    </div>
+                `;
+
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>
